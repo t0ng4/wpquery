@@ -1,5 +1,5 @@
 {
-  "name": "mynd/wp-query",
+  "name": "mynd/wpquery",
   "description": "A wrapper for easy and fluent WordPress Queries",
   "require": {
     "php": ">=7.4"
