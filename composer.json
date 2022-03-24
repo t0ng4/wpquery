@@ -1,0 +1,12 @@
+{
+  "name": "mynd/wp-query",
+  "description": "A wrapper for easy and fluent WordPress Queries",
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "MYND\\WPQ\\": "src/"
+    }
+  }
+}
