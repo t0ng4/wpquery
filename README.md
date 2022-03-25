@@ -24,7 +24,7 @@ _Retrieve posts with a meta_value `test_value` between 1 and 5_
 $posts = Query::post()->withAnyOfMeta( [Query::postmeta( 'test_value' )->between( 1, 5 )] )->get();
 ```
 _Get posts of type `artwork`  that are assigned to at least one of the taxonomies `color` with attributes (e.g. terms) `blue or red or green` 
- __OR__ the `size` taxonomy with sizes `s or m` __AND__ have a meta_value between `1 and 5`_
+ __OR__ the `size` taxonomy with sizes `s or m` __AND__ have a meta_key `test_value` with value between `1 and 5`_
 
 ```
 $posts = Query::post()->ofType(['artwork'])
