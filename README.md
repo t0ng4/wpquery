@@ -4,8 +4,10 @@ Wrapper around WP_Query for crafting fluent and expressive queries
 __INSTALLATION__
 ```
 composer require mynd/wpquery
+```
 
 _in PHP:_
+```
 ...
 use MYND\WQP\Classes\Query;
 ...
