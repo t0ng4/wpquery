@@ -2,7 +2,7 @@
 
 namespace MYND\WPQ\Classes;
 
-class MetaQuery {
+class MetaQuery extends SubQuery {
 
 	private $key;
 	private $value;
@@ -173,4 +173,7 @@ class MetaQuery {
 	}
 
 
+	public static function getKey() {
+		return 'meta_query';
+	}
 }

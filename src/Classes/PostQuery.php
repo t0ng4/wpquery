@@ -13,6 +13,41 @@ class PostQuery {
 		return $this->query;
 	}
 
+	public function withDate( array $dateQueries ) {
+
+		foreach ( $dateQueries as $dateQuery ) {
+			$this->arguments['date_query'][] = $dateQuery->get();
+		}
+
+		return $this;
+	}
+
+	public function with( ...$arguments ) {
+		foreach ( $arguments as $argument ) {
+
+			if ( is_array( $argument ) && sizeof( $argument ) > 0 ) {
+				$class                                       = get_class( $argument[0] );
+				$subQueryKey                                 = ( "{$class}::getKey" )();
+				$this->arguments[ $subQueryKey ]['relation'] = 'AND';
+				foreach ( $argument as $queryInstance ) {
+					$this->arguments[ $subQueryKey ][] = $queryInstance->get();
+				}
+			} else {
+				$class                                       = get_class( $argument );
+				$subQueryKey                                 = ( "{$class}::getKey" )();
+				$this->arguments[ $subQueryKey ]['relation'] = 'OR';
+				$this->arguments[ $subQueryKey ][]           = $argument->get();
+			}
+
+		}
+
+		return $this;
+	}
+
+	private function isArrayOf( $array, $class ) {
+
+	}
+
 	public function ofType( array $types ) {
 		$this->arguments['post_type'] = $types;
 
@@ -25,7 +60,7 @@ class PostQuery {
 		return $this;
 	}
 
-	public function hasAnyOfTerms( $taxQueries ) {
+	public function withAnyTaxonomy( $taxQueries ) {
 
 		$this->arguments['tax_query']['relation'] = 'OR';
 		foreach ( $taxQueries as $taxQuery ) {
@@ -35,7 +70,7 @@ class PostQuery {
 		return $this;
 	}
 
-	public function hasAllOfTerms( $taxQueries ) {
+	public function withAllTaxonomies( $taxQueries ) {
 
 		$this->arguments['tax_query']['relation'] = 'AND';
 		foreach ( $taxQueries as $taxQuery ) {

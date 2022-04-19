@@ -2,7 +2,7 @@
 
 namespace MYND\WPQ\Classes;
 
-class TaxQuery {
+class TaxQuery extends SubQuery {
 
 	private $taxonomy;
 	private $terms;
@@ -16,7 +16,7 @@ class TaxQuery {
 
 	public function __construct( $taxonomy, $terms = [] ) {
 		$this->taxonomy = $taxonomy;
-		$this->terms = $terms;
+		$this->terms    = $terms;
 	}
 
 	public function terms( $terms ) {
@@ -59,4 +59,7 @@ class TaxQuery {
 		];
 	}
 
+	public static function getKey() {
+		return 'tax_query';
+	}
 }
