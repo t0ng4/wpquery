@@ -4,15 +4,15 @@ namespace MYND\WPQ\Classes;
 
 class TaxQuery extends SubQuery {
 
-	private $taxonomy;
-	private $terms;
-	private $field = 'term_id';
-	private $operator = 'IN';
-
 	const SEARCH_BY_SLUG = 'slug';
 	const SEARCH_BY_NAME = 'name';
 	const SEARCH_BY_TERM_TAX_ID = 'term_taxonomy_id';
 	const SEARCH_BY_ID = 'term_id';
+
+	private $taxonomy;
+	private $terms;
+	private $field = 'term_id';
+	private $operator = 'IN';
 
 	public function __construct( $taxonomy, $terms = [] ) {
 		$this->taxonomy = $taxonomy;

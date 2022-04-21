@@ -16,8 +16,8 @@ class Query {
 		return new DateQuery();
 	}
 
-	public static function postmeta( $value ) {
-		return new MetaQuery( $value );
+	public static function postmeta( $key ) {
+		return new MetaQuery( $key );
 	}
 
 	public static function taxonomy( $taxonomy, $terms = [] ) {
