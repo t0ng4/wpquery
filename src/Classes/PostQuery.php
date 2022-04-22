@@ -34,6 +34,10 @@ class PostQuery {
 		return $this;
 	}
 
+	public function idsOnly() {
+		$this->arguments['fields'] = 'ids';
+	}
+
 	public function type( array $types ) {
 		$this->arguments['post_type'] = $types;
 
